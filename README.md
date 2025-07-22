@@ -79,10 +79,10 @@ API pour la gestion de défis d'entraînement physique selon les spécifications
 - `PATCH /gyms/:id/reject` - Rejeter (Super Admin)
 
 ### Types d'Exercices
-- `GET /exercise-types` - Liste des exercices
-- `POST /exercise-types` - Créer (Super Admin)
-- `PUT /exercise-types/:id` - Modifier (Super Admin)
-- `DELETE /exercise-types/:id` - Supprimer (Super Admin)
+- `GET /exercises` - Liste des exercices
+- `POST /exercises` - Créer (Super Admin)
+- `PUT /exercises/:id` - Modifier (Super Admin)
+- `DELETE /exercises/:id` - Supprimer (Super Admin)
 
 ### Défis
 - `GET /challenges` - Explorer les défis
