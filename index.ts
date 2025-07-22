@@ -83,20 +83,20 @@ async function bootstrapAPI(
     exerciseTypeService: ExerciseService,
     badgeService: BadgeService
 ) {
-    if(typeof process.env.FITNESS_ROOT_EMAIL === 'undefined') {
-        throw new Error('FITNESS_ROOT_EMAIL is not defined');
+    if(typeof process.env.TSNESS_ROOT_EMAIL === 'undefined') {
+        throw new Error('TSNESS_ROOT_EMAIL is not defined');
     }
-    if(typeof process.env.FITNESS_ROOT_PASSWORD === 'undefined') {
-        throw new Error('FITNESS_ROOT_PASSWORD is not defined');
+    if(typeof process.env.TSNESS_ROOT_PASSWORD === 'undefined') {
+        throw new Error('TSNESS_ROOT_PASSWORD is not defined');
     }
     
-    const rootUser = await userService.findUser(process.env.FITNESS_ROOT_EMAIL);
+    const rootUser = await userService.findUser(process.env.TSNESS_ROOT_EMAIL);
     if(!rootUser) {
         await userService.createUser({
             firstName: 'Super',
             lastName: 'Admin',
-            password: process.env.FITNESS_ROOT_PASSWORD,
-            email: process.env.FITNESS_ROOT_EMAIL,
+            password: process.env.TSNESS_ROOT_PASSWORD,
+            email: process.env.TSNESS_ROOT_EMAIL,
             role: UserRole.SUPER_ADMIN,
             isActive: true,
             score: 0
