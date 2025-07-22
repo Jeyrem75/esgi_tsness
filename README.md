@@ -1,4 +1,4 @@
-# Fitness Challenge API
+# TSNess API
 
 ## Description
 API pour la gestion de défis d'entraînement physique selon les spécifications du sujet.
