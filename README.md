@@ -105,7 +105,7 @@ API pour la gestion de défis d'entraînement physique selon les spécifications
 1. **Cloner et installer**
 ```bash
 git clone <repo>
-cd fitness-challenge-api
+cd esgi_tsness
 npm install
 ```
 
@@ -126,4 +126,4 @@ npm run build
 npm start
 ```
 
-L'API sera disponible sur `http://localhost:3000`
+L'API sera disponible sur `http://localhost:3001`
