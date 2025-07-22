@@ -39,7 +39,7 @@ function startAPI() {
         const gymController = new controllers_1.GymController(gymService, sessionService, userService);
         app.use('/gyms', gymController.buildRouter());
         const exerciseTypeController = new controllers_1.ExerciseController(exerciseTypeService, sessionService);
-        app.use('/exercise-types', exerciseTypeController.buildRouter());
+        app.use('/exercises', exerciseTypeController.buildRouter());
         const challengeController = new controllers_1.ChallengeController(challengeService, sessionService, challengeParticipationService, userService);
         app.use('/challenges', challengeController.buildRouter());
         const badgeController = new controllers_1.BadgeController(badgeService, sessionService, userBadgeService);
