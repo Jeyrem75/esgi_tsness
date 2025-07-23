@@ -1,7 +1,7 @@
 import {SessionService, GymService, UserService} from "../services/mongoose";
 import {Request, Response, Router, json} from "express";
 import {roleMiddleware, sessionMiddleware} from "../middlewares";
-import {UserRole, GymStatus} from "../models";
+import {UserRole, GymStatus, getUserRoleLevel} from "../models";
 
 export class GymController {
     constructor(public readonly gymService: GymService,
@@ -45,7 +45,10 @@ export class GymController {
             return;
         }
 
-        if(gym.owner.toString() !== req.user!._id) {
+        const gymOwnerId = typeof gym.owner === 'string' ? gym.owner : gym.owner._id;
+        const isOwner = gymOwnerId.toString() === req.user?._id.toString();
+
+        if (!isOwner) {
             res.status(403).end();
             return;
         }

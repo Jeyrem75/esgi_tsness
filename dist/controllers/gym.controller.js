@@ -46,13 +46,16 @@ class GymController {
     }
     updateMyGym(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            var _a;
             const gymId = req.params.id;
             const gym = yield this.gymService.getGymById(gymId);
             if (!gym) {
                 res.status(404).end();
                 return;
             }
-            if (gym.owner.toString() !== req.user._id) {
+            const gymOwnerId = typeof gym.owner === 'string' ? gym.owner : gym.owner._id;
+            const isOwner = gymOwnerId.toString() === ((_a = req.user) === null || _a === void 0 ? void 0 : _a._id.toString());
+            if (!isOwner) {
                 res.status(403).end();
                 return;
             }

@@ -114,8 +114,12 @@ class ChallengeController {
                 res.status(404).end();
                 return;
             }
-            if (challenge.creator.toString() !== req.user._id &&
-                !challenge.participants.some(p => p.toString() === req.user._id)) {
+            const isParticipant = challenge.participants.some(p => {
+                var _a;
+                const participantId = typeof p === 'string' ? p : p === null || p === void 0 ? void 0 : p._id;
+                return participantId.toString() === ((_a = req.user) === null || _a === void 0 ? void 0 : _a._id.toString());
+            });
+            if (isParticipant) {
                 res.status(403).end();
                 return;
             }

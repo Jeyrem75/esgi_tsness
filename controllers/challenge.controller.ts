@@ -111,8 +111,12 @@ export class ChallengeController {
             return;
         }
 
-        if(challenge.creator.toString() !== req.user!._id && 
-           !challenge.participants.some(p => p.toString() === req.user!._id)) {
+        const isParticipant = challenge.participants.some(p => {
+            const participantId = typeof p === 'string' ? p : p?._id;
+            return participantId.toString() === req.user?._id.toString();
+        });
+
+        if(isParticipant) {
             res.status(403).end();
             return;
         }
